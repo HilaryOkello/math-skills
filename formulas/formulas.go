@@ -10,9 +10,7 @@ func CalcAverage(data []float64) float64 {
 	for _, num := range data {
 		sum += num
 	}
-	n := float64(len(data))
-	average := sum / n
-	return average
+	return sum / float64(len(data))
 }
 
 func CalcMedian(data []float64) float64 {
@@ -21,8 +19,7 @@ func CalcMedian(data []float64) float64 {
 		return data[len(data)/2]
 	}
 	sumOfMiddle := data[len(data)/2] + data[(len(data)/2)-1]
-	median := sumOfMiddle / 2
-	return median
+	return sumOfMiddle / 2
 }
 
 func CalcVariance(data []float64, mean float64) float64 {
@@ -31,8 +28,7 @@ func CalcVariance(data []float64, mean float64) float64 {
 		diff := num - mean
 		sumOfSquares += math.Pow(diff, 2)
 	}
-	variance := sumOfSquares / float64(len(data))
-	return variance
+	return sumOfSquares / float64(len(data))
 }
 
 func CalcStdDev(variance float64) float64 {

@@ -1,31 +1,48 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"log"
 	"math"
 	"os"
 	"strconv"
-	"strings"
 
 	"math-skills/formulas"
 )
 
 func main() {
-	fileName := os.Args[1]
-	content, err := os.ReadFile(fileName)
-	if err != nil {
-		fmt.Println(err)
-		return
+	if len(os.Args) != 2 {
+		log.Fatal("Incorrect command.\nExpects: \"go run main.go <filename>\"")
 	}
-	dataString := strings.Split(string(content[:len(content)-1]), "\n")
+	fileName := os.Args[1]
+
+	file, err := os.Open(fileName)
+	if err != nil {
+		log.Fatalf("Error opening %s:\n%s", fileName, err)
+	}
+	defer file.Close()
+
+	fileInfo, err := os.Stat(fileName)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fileSize := fileInfo.Size()
+
+	if fileSize == 0 {
+		log.Fatal(fileName, " is empty.")
+	}
+
+	scanner := bufio.NewScanner(file)
 	var dataInts []float64
-	for _, str := range dataString {
-		num, err := strconv.Atoi(str)
+	for scanner.Scan() {
+		line := scanner.Text()
+		num, err := strconv.ParseFloat(line, 64)
 		if err != nil {
-			fmt.Println(err)
-			return
+			log.Fatalf("%s may contain non number data: %s", fileName, err)
 		}
-		dataInts = append(dataInts, float64(num))
+		dataInts = append(dataInts, num)
 	}
 
 	average := math.Round(formulas.CalcAverage(dataInts))
