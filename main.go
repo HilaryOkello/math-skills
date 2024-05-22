@@ -12,11 +12,16 @@ import (
 )
 
 func main() {
+	//Check command for correctness
 	if len(os.Args) != 2 {
 		log.Fatal("Incorrect command.\nExpects: \"go run main.go <filename>\"")
 	}
 	fileName := os.Args[1]
+	if fileName[len(fileName)-4:] != ".txt" {
+		log.Fatal("Wrong file extension. Expects a .txt file")
+	}
 
+	//Opening file, defer close, and check if it's empty
 	file, err := os.Open(fileName)
 	if err != nil {
 		log.Fatalf("Error opening %s:\n%s", fileName, err)
@@ -34,6 +39,7 @@ func main() {
 		log.Fatal(fileName, " is empty.")
 	}
 
+	// create a scanner, read each line, and append nums to []float64
 	scanner := bufio.NewScanner(file)
 	var dataInts []float64
 	for scanner.Scan() {
@@ -44,7 +50,7 @@ func main() {
 		}
 		dataInts = append(dataInts, num)
 	}
-
+	// call functions from the formulas package to calculate our statistics, then print
 	average := math.Round(formulas.CalcAverage(dataInts))
 	median := math.Round(formulas.CalcMedian(dataInts))
 	variance := math.Round(formulas.CalcVariance(dataInts, average))

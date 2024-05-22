@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 )
-
+// Loops through various test cases and checks whether my functions behaves as expected
 func TestCalcAverage(t *testing.T) {
 	testcases := []struct {
 		name  string
@@ -33,6 +33,7 @@ func TestCalcAverage(t *testing.T) {
 		},
 	}
 	for _, tc := range testcases {
+		//Running subtests on each test case
 		t.Run(tc.name, func(t *testing.T) {
 			got := CalcAverage(tc.input)
 			if math.Round(got) != math.Round(tc.want) {
@@ -70,6 +71,7 @@ func TestCalcMedian(t *testing.T) {
 		},
 	}
 	for _, tc := range testcases {
+		//Running subtests on each test case
 		t.Run(tc.name, func(t *testing.T) {
 			got := CalcMedian(tc.input)
 			if math.Round(got) != math.Round(tc.want) {
@@ -79,7 +81,7 @@ func TestCalcMedian(t *testing.T) {
 	}
 }
 
-func TestCalcVariance(t *testing.T) {
+func TestCalcVariance(t *testing.T) {//Running subtests on each test case
 	testcases := []struct {
 		name  string
 		input []float64
@@ -107,6 +109,7 @@ func TestCalcVariance(t *testing.T) {
 		},
 	}
 	for _, tc := range testcases {
+		//Running subtests on each test case
 		t.Run(tc.name, func(t *testing.T) {
 			got := CalcVariance(tc.input, CalcAverage(tc.input))
 			if math.Round(got) != math.Round(tc.want) {
@@ -144,6 +147,7 @@ func TestCalcStdDev(t *testing.T) {
 		},
 	}
 	for _, tc := range testcases {
+		//Running subtests on each test case
 		t.Run(tc.name, func(t *testing.T) {
 			got := CalcStdDev(CalcVariance(tc.input, CalcAverage(tc.input)))
 			if math.Round(got) != math.Round(tc.want) {
