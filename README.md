@@ -1,14 +1,8 @@
 # Math Skills
 
 This repository contains a program written in Go for calculating various statistics such as Average, Median, Variance, and Standard Deviation from a given dataset.
-Requirements
-
-    Go (latest version)
-
-## Installation
-
-Make sure you have the latest version of Go installed on your system.
-You can download and install it from the official [Go website](https://go.dev/dl/).
+### Requirements
+You need to have at least  go version go1.22.0 or higher to run the program. You can download and install it from the official [Go website](https://go.dev/dl/).
 
 ## Usage
 
