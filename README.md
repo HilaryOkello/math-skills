@@ -25,8 +25,14 @@ Run the program with the following command:
 ```bash
 go run main.go data.txt
 ```
-Replace data.txt with the path to your dataset file. The dataset file should contain one value per line, representing a statistical population.
-Example
+or 
+```bash
+go run . data.txt
+```
+
+Replace data.txt with your dataset file (Must be a text file with a ".txt" extension). The dataset file should contain one value per line, representing a statistical population.
+
+### Example
 
 If your dataset file data.txt contains:
 ```txt
@@ -36,15 +42,14 @@ If your dataset file data.txt contains:
 114
 145
 110
-...
 ```
 Running the program will output:
 
 ```bash
-Average: 128
+Average: 132
 Median: 118
-Variance: 1115
-Standard Deviation: 33
+Variance: 785
+Standard Deviation: 28
 ```
 The values are rounded to the nearest integer.
 
