@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	//Check command for correctness
+	// Check command for correctness
 	if len(os.Args) != 2 {
 		log.Fatal("Incorrect command.\nExpects: \"go run main.go <filename>\"")
 	}
@@ -21,7 +21,7 @@ func main() {
 		log.Fatal("Wrong file extension. Expects a .txt file")
 	}
 
-	//Opening file, defer close, and check if it's empty
+	// Opening file, defer close, and check if it's empty
 	file, err := os.Open(fileName)
 	if err != nil {
 		log.Fatalf("Error opening %s:\n%s", fileName, err)
@@ -51,11 +51,11 @@ func main() {
 		dataInts = append(dataInts, num)
 	}
 	// call functions from the formulas package to calculate our statistics, then print
-	average := math.Round(formulas.CalcAverage(dataInts))
+	average := formulas.CalcAverage(dataInts)
+	variance := formulas.CalcVariance(dataInts, average)
 	median := math.Round(formulas.CalcMedian(dataInts))
-	variance := math.Round(formulas.CalcVariance(dataInts, average))
 	standardDeviation := math.Round(formulas.CalcStdDev(variance))
 
 	fmt.Printf("Average: %.0f\nMedian: %.0f\nVariance: %.0f\nStandard Deviation: %.0f\n",
-		average, median, variance, standardDeviation)
+		math.Round(average), median, math.Round(variance), standardDeviation)
 }
