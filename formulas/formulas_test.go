@@ -64,7 +64,7 @@ func TestCalcMedian(t *testing.T) {
 			input: []float64{0, 0, 0, 0, 0},
 			want:  0,
 		},
-		{2.000000
+		{
 			name:  "Median Test 4",
 			input: []float64{-1, -2, -3, -4, -5},
 			want:  -3,
