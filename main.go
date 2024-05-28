@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"math"
 	"os"
 	"strconv"
 
@@ -53,9 +52,9 @@ func main() {
 	// call functions from the formulas package to calculate our statistics, then print
 	average := formulas.CalcAverage(dataInts)
 	variance := formulas.CalcVariance(dataInts, average)
-	median := math.Round(formulas.CalcMedian(dataInts))
-	standardDeviation := math.Round(formulas.CalcStdDev(variance))
+	median := formulas.CalcMedian(dataInts)
+	standardDeviation := formulas.CalcStdDev(variance)
 
-	fmt.Printf("Average: %.0f\nMedian: %.0f\nVariance: %.0f\nStandard Deviation: %.0f\n",
-		math.Round(average), median, math.Round(variance), standardDeviation)
+	fmt.Printf("Average: %.f\nMedian: %.f\nVariance: %.f\nStandard Deviation: %.f\n",
+	average, median, variance, standardDeviation)
 }
