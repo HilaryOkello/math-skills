@@ -19,7 +19,6 @@ func CalcAverage(data []float64) float64 {
 func CalcMedian(data []float64) float64 {
 	// sorts the []float in ascending order
 	sort.Float64s(data)
-	fmt.Println(data)
 	if len(data)%2 != 0 {
 		return data[len(data)/2]
 	}
