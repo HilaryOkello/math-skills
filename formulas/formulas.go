@@ -1,7 +1,6 @@
 package formulas
 
 import (
-	"fmt"
 	"math"
 	"sort"
 )
